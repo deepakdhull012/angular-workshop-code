@@ -5,6 +5,9 @@ import { DisplayTodoComponent } from './components/display-todo/display-todo.com
 import { ListTodoComponent } from './components/list-todo/list-todo.component';
 import { StoreModule } from '@ngrx/store';
 import { todoReducer } from "./state/todo.reducers";
+import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { ToDoEffects } from "./state/todo.effects";
 
 
 @NgModule({
@@ -15,10 +18,13 @@ import { todoReducer } from "./state/todo.reducers";
   ],
   imports: [
     CommonModule,
-    StoreModule.forFeature("todo", todoReducer)
+    HttpClientModule,
+    StoreModule.forFeature("todo", todoReducer),
+    EffectsModule.forFeature([ToDoEffects])
   ],
   exports: [CreateTodoComponent,
     DisplayTodoComponent,
-    ListTodoComponent]
+    ListTodoComponent
+  ]
 })
 export class TodoModule { }

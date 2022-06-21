@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Todo } from '../../interfaces/todo.interfaces';
+import { TodoService } from '../../services/todo.service';
+import { RemoveTodoAction } from '../../state/todo.actions';
 
 @Component({
   selector: 'app-display-todo',
@@ -10,9 +13,16 @@ export class DisplayTodoComponent implements OnInit {
 
   @Input() public todo: Todo = null as any as  Todo;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
+    
+  }
+
+  removeTodo() {
+    this.store.dispatch(RemoveTodoAction({
+      id: this.todo.id
+    }))
   }
 
 }

@@ -1,0 +1,5 @@
+<button (click)="activate('tdd')">Template Driven Form</button>
+<button (click)="activate('reactive')">Reactive Form</button>
+
+<tdd-form-demo *ngIf="isTDDActive"></tdd-form-demo>
+<reactive-form-demo *ngIf="!isTDDActive"></reactive-form-demo>
